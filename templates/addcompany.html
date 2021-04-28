@@ -1,0 +1,156 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>Add company details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css'%}">
+<!--    <script type="text/javascript" src="{% static 'components/SmartSignalHeader/smartSignalHeader.js'%}"></script>
+    <script type="text/javascript"
+        src="{% static 'components/SmartSignalSidebar/smartSignalSidebarAdmin.js'%}"></script> -->
+
+</head>
+
+<body>
+<!--    <smart-signal-header name="{{user.first_name}}" isAuthenticated="{{user.is_authenticated}}"></smart-signal-header>
+    <smart-signal-sidebar-admin></smart-signal-sidebar-admin> -->
+    <div class="ss-main-container">
+         <img class="ss-default-bg" src="/static/images/Ecube_logo.png"/>
+            <form action="addcompany" method="POST" onSubmit="return confirm('Please refer section 1.1 of SSTS Operational Manual');">
+            {% csrf_token %}
+		<table border='0' width='680px' cellpadding='0' cellspacing='0' align="left">
+		<!--<table border="1" align="center" width="700" bgcolor="#CCCCCC" > -->
+		<caption>Client registration form</caption>
+		<tr>
+		<th style="border:none;">Enter company's short name</th>
+		<td style="border:none;"><input type="text" align='left' name="company_name" maxlength="50" placeholder="Company name" required/></td>
+		</tr>
+		<tr>
+		<tr>
+		<th style="border:none;">Enter company name</th>
+		<td style="border:none;"><input type="text" align='left' name="company_name" maxlength="50" placeholder="Company name" required/></td>
+		</tr>
+
+		<tr>
+		<th style="border:none;">Upload company logo</th>
+		<td style="border:none;" ><input type="file" align='center' name="company_logo" id="fileToUpload" placeholder="Company logo" accept="image/*"></td>
+		</tr>
+		<tr>
+		<th style="border:none;">Enter your first name</th>
+		<td style="border:none;"><input type="text" name="first_name" placeholder="First name"/></td>
+		</tr>
+		<tr>
+		<th style="border:none;">Enter your last name</th>
+		<td style="border:none;"><input type="text" name="last_name" placeholder="Last name"/></td>
+		</tr>
+		<tr>
+		<th style="border:none;">Enter your email</th>
+		<td style="border:none;"><input type="email" name="email" placeholder="email" required/></td>
+		</tr>
+		<tr>
+		<th style="border:none;"> Enter user name</th>
+		<td style="border:none;"><input type="text" name="username" placeholder="User name" required/></td>
+		</tr>
+		<tr>
+		<th style="border:none;">Enter your password</th>
+		<td style="border:none;"><input type="password" name="password1" placeholder="Password" required/></td>
+		</tr>
+		<tr>
+		<th style="border:none;">Re-enter your password</th>
+		<td style="border:none;"><input type="password"  name="password2" placeholder="Confirm password" required/></td>
+		</tr>
+		<tr>
+		<td style="border:none;"> &nbsp;</td>
+		</tr>
+		<tr>
+		<td colspan="2" align="center" style="border:none;"><input type="submit" value="Create user" name="create_user"/>
+		<input type="hidden" name="usercreation" value="create_user">
+		<input type="reset" value="Reset Data"/>
+		</td>
+		</tr> 	
+	</table>    
+ {% block content %}
+ {% for client in client_list %}
+	{{ client }}
+ {% endfor %}
+{% endblock %}
+     </form>
+     <div>
+            {% for message in messages %}
+            <h3> {{message}} </h3>
+            {% endfor %}
+     </div>
+     <div class="footer">
+                 <p>Developed by Ecube integrated solutions (OPC) private limited </p>
+     </div>
+    
+   </div>
+
+<script>
+// Invoke HTML5 custom constraints validation to enforce MIME-type as defined in file inputs' `accept` attribute.
+void function enhanceFileInputTypeValidityCheck(){
+  var inputPrototype      = document.createElement( 'input' ).constructor.prototype;
+  // Keep a local reference to out-of-the-box functionality we're about to enhance
+  var nativeCheckValidity = inputPrototype.checkValidity;
+  // I don't know why, but custom validation only appears to work
+  // if I bind to both these events - even neither triggers it...
+  // http://stackoverflow.com/questions/21003342/how-do-i-invoke-custom-constraint-validation-as-part-of-the-native-validation-ev
+  var events              = [ 'change', 'input' ];
+
+  // Pre-validation check, to see if an input is eligible for file type validation.
+  function shouldValidate( element ){
+    return ( element instanceof HTMLInputElement &&
+             element.type === 'file'             &&
+             element.accept                      &&
+             element.files                       &&
+             element.files.length
+    );
+  }
+
+ // Our custom validation function
+  function validateFileInputType( input ){
+    // Convert MIME-type patterns as described in the `accept` attribute
+    // into a valid expression to test actual MIME-type against
+    var MIMEtype = new RegExp( input.accept.replace( '*', '[^\\/,]+' ) );
+
+    // Ensure each of the input's files' types conform to the above
+    return Array.prototype.every.call( input.files, function passesAcceptedFormat( file ){
+      return MIMEtype.test( file.type );
+    } );
+  }
+
+  // Perform `checkValidity` on each input
+  function validateInputs(){
+    Array.prototype.forEach.call( document.querySelectorAll( 'input, select' ), function callValidation( input ){
+      input.checkValidity();
+    } );
+  }
+// Enhance native `checkValidity` behaviour
+  inputPrototype.checkValidity = function enhancedCheckValidity(){
+    if( shouldValidate( this ) ){
+      if( !validateFileInputType( this ) ){
+        // Replace the argument below with whatever you want
+        this.setCustomValidity( 'Please only submit files of type ' + this.accept );
+
+        return false;
+      }
+    }
+
+    // Hand back to native functionality
+    return nativeCheckValidity.apply( this );
+  }
+ // Bind it up!
+  events.forEach( function bindValidation( event ){
+    document.documentElement.addEventListener( event, validateInputs );
+  } );
+}();
+</script>
+
+</html>

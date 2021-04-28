@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Django CRUD Operations</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+		<th>Short name</th>
+		<th>Company name</th>
+		<th>Street</th>
+		<th>Town</th>
+        <th>Zipcode</th>
+		<th>Country</th>
+		<th>URL</th>
+		<th>Contact person</th>
+		<th>Telephone number</th>
+        <th>Email</th>
+		<th>Fax no</th>
+		<th>Tax no1</th>
+		<th>Tax no2</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in cd %}
+      <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.short_nm}}</td>
+		<td>{{i.company_nm}}</td>
+		<td>{{i.street}}</td>
+		<td>{{i.town}}</td>
+        <td>{{i.zipcode}}</td>
+        <td>{{i.country}}</td>
+		<td>{{i.internet_address}}</td>
+		<td>{{i.contact_person}}</td>
+		<td>{{i.telephone_number}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.fax_no}}</td>
+        <td>{{i.tax_no1}}</td>
+		<td>{{i.tax_no2}}</td>
+        <td>
+            <a href="/edit/{{ i.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+            <a href="/delete/{{ i.id }}">Delete</a>
+        </td>
+      </tr>
+	  {% endfor %}
+	</tbody>
+</table>
+    <br>
+<br>
+<center><a href="cmp" class="btn btn-primary">Add New Record</a></center>
+</div>
+</body>
+</html>

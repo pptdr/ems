@@ -1,0 +1,116 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+<!DOCTYPE html>
+<font>
+  <head>
+
+      <title>Energy Management System</title>
+      <link rel="stylesheet" type="text/css" href="{% static 'styles/main1.css'%}">
+      <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+      <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+
+  <p>
+  <header>
+  <style>
+
+    .first-info{
+    position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: fixed;
+}
+.login_form{
+    width: 350px;
+    background: linear-gradient(45deg, black, transparent);
+    margin-left: 35%;
+    margin-right: 35%;
+    position: absolute;
+    bottom: 4px;
+    border-radius: 15px;
+    height: 220px;
+}
+.header_form{
+    width:100%;
+    top : 0 px
+    padding: 10px;
+    font-size: 20px;
+    position : absolute;
+    text-align : center;
+}
+input[type=text] {
+    width: 300px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size= 10px: ;
+}
+
+input[type=password] {
+width: 300px;
+padding: 12px 20px;
+margin: 8px 0;
+box-sizing: border-box;
+}
+
+.login_button {
+    background: linear-gradient(45deg, black, transparent);
+    color: white;
+    width: 100px;
+    height: 30px;
+}
+
+.etc-login-form {
+  color: #919191;
+  padding: 10px 20px;
+}
+
+.etc-login-form p {
+  margin-bottom: 5px;
+}
+a {
+  color: white;
+}
+</style>   
+      <div>
+      <header class="header_form" style="height: 100px; width: 100%; text-color:white; text-align:center;z-index:1;">
+          <h1 style="color: white;">Ecube Integrated Solutions (OPC) Pvt.Ltd</h1>
+      </header></div>
+
+      <header class="container">
+          <div class="row first-info">
+          <div class="row">
+
+            {%block content%}
+
+                <!-- <div style="text-align:center">   -->
+                    <div class="login_form"> 
+                    <span style="font-size: 18px;">USER LOGIN</span>
+                    <form id="login" action="login" method="POST" >
+                    {% csrf_token %}
+                            <div class="input-container">
+                            <i class="fa fa-user icon"></i>
+                            <input class="input-field" type="text" placeholder="username" name="username">
+                            </div>
+                            <div class="input-container">
+                            <i class="fa fa-key icon"></i>
+                            <input class="input-field" type="password" placeholder="password" name="password">
+                            </div>
+			    <p> Forgot your password? <a href="/password_reset">Click here</a></p>                    
+
+
+                    {% if request.GET.next %}
+                        <input type="hidden" name="next" value={{request.GET.next}}>
+                    {% endif %}
+                    <button class="login_button" type="submit">LOGIN</button>
+                    {%endblock%}
+                </div>
+            </form>
+   </header>
