@@ -1,0 +1,99 @@
+.sidenav-left {
+            height: 100%;
+            width: 350px;
+            position: absolute;
+            background-color: lightslategrey;
+            overflow-x: auto;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            left: 15px;
+            position: absolute;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd
+        }
+
+        .show {
+            display: block;
+        }
+
+        .company-name {
+            height: 70px;
+            line-height: 25px;
+            font-size: 25px;
+            padding: 18px 0;
+            text-align: center;
+            background: black;
+            font-weight: bold;
+            color: white;
+            border-bottom: 1px solid white;
+        }
+
+        .topnav-right {
+            float: right;
+        }
+
+        .panel-dropdown {
+            width: 90%;
+            margin: 5%;
+        }
+        
+        .panel-dropdown .panel-title {
+            position: relative;
+        }
+
+        .panel-dropdown .panel-body {
+            height: 40px;
+            line-height: 12px;
+            background: lightgray;
+        }
+
+        .panel-dropdown .panel-title::after {
+            content: "\f107";
+            color: #333;
+            top: -2px;
+            right: 0px;
+            position: absolute;
+            font-family: "FontAwesome"
+        }
+
+        .panel-dropdown .panel-title[aria-expanded="true"]::after {
+            content: "\f106";
+        }
+
+        .panel-dropdown a:link,
+        .panel-dropdown a:visited,
+        .panel-dropdown a:hover,
+        .panel-dropdown a:active {
+            text-decoration: none;
+            font-size: 16px;
+            color: black;
+            height: 30px;
+        }
+        .panel-dropdown-text {
+            margin: auto 10px;
+        }
+
+	.user-dropdown {
+		position: absolute !important;
+	}

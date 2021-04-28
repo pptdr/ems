@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    
+    <title>Smart Signal Management</title>
+
+    <!-- Third Party Dependencies -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Internal Dependencies -->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css'%}">
+    <script type="text/javascript" src="{% static 'components/SmartSignalHeader/SmartSignalHeader.js'%}"></script>
+    <script type="text/javascript" src="{% static 'components/SmartSignalSidebar/smartSignalSidebarUser.js'%}"></script>
+</head>
+
+<body style="background: aliceblue;">
+	<smart-signal-header name="{{user.first_name}}" isAuthenticated="{{user.is_authenticated}}" logoUrl=""></smart-signal-header>
+	<smart-signal-sidebar-user name="{{user}}"></smart-signal-sidebar-user>
+	<div class="ss-main-container">
+		<img class="ss-default-bg" src="/static/images/Ecube_logo.png"/>
+	<!--	<h2>Ecube integrated solutions welcomes you</h2>
+          		<span>Welcome, {{user.first_name}}!</span>   
+	        <br><br><br><br><br><br><br><br><br><br><br>	
+                <span><img src="{% static 'images/dpifs.jpeg'%}" width="400" height="400"></span> -->
+
+	<div class="footer">
+		 <p>Developed by Ecube integrated solutions (OPC) private limited </p>
+	</div>
+
+</div>
+
+
+</body>
+</html>
+
