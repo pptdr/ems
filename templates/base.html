@@ -24,10 +24,17 @@
 
             <div class="main_content">
     
+                {% block main_content_header %}
+                    Default Header
+                {% endblock %}
+
                 {% block main_content %}
     
                 {% endblock %}
                 
+                {% block main_content_footer %}
+                    Default Footer
+                {% endblock %}
             </div>
         </div>
     </div>
