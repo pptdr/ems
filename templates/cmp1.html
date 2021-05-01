@@ -1,17 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'main_content.html' %}
 {% load static %}
 
+{% block main_content_header %}
+    Enter Company Details
+{% endblock %}
+
 {% block main_content %}
-<div class="form-container">
-    <form action="cmp1" method="POST">
+    <form class="main-content-form" action="cmp1" method="POST">
         {% csrf_token %}
         <table>
             {{form}}
         </table>
         
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary ems-button">Add New Company</button>
     </form>
-</div>
 {% endblock %}
 
-</html>

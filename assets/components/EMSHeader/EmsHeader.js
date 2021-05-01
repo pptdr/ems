@@ -8,10 +8,25 @@ class EMSHeader extends HTMLElement {
 	this.isAuthenticated = this.getAttribute("isAuthenticated");
 
         this.innerHTML = `
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg" style="background-color: midnightblue;">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">EMS Inc.</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+          <a class="navbar-brand" href="/home">EMS LOGO</a>
+          
+        </div>
+      </nav>
+        
+        `;
+    }
+
+}
+
+window.customElements.define('ems-header', EMSHeader);
+
+/**
+ * 
+ * 
+ * <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
@@ -30,12 +45,4 @@ class EMSHeader extends HTMLElement {
               </li>
             </ul>
           </div>
-        </div>
-      </nav>
-        
-        `;
-    }
-
-}
-
-window.customElements.define('ems-header', EMSHeader);
+ */

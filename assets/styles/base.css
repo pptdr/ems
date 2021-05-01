@@ -1,17 +1,14 @@
 .outer-container {
     height: 100%;
-    /* top: 56px; */
-    /* position: inherit; */
-    /* width: 100%; */
-    /* background-color: green; */
     position: relative;
-    border: 1px solid aquamarine;
+    font-family: system-ui;
 }
 
 .container-1 {
-    /* margin-top: 56px; */
-    /* height: 100%; */
     position: absolute;
     height: 100%;
 }
+
+
+
 

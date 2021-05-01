@@ -1,6 +1,33 @@
 .sidebar {
-    width: 250px;
-    border: 1px solid red;
+    width: 300px;
     height: 100%;
     position: fixed;
+    border-right: 5px solid midnightblue;
+}
+
+#accordionExample {
+    height: calc(100% - 56px);
+    overflow-x: scroll;
+}
+
+.opt-a {
+    text-decoration: none;
+    margin-left: 8px;
+    color: midnightblue;
+}
+
+.navbar-brand {
+    color: white;
+    font-weight: 900;
+}
+
+.accordion-button {
+    color: midnightblue;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.accordion-button:not(.collapsed) {
+    color: midnightblue !important;
 }
